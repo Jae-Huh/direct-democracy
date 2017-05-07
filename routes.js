@@ -26,7 +26,7 @@ router.get('/', (req, res) => {
 
 router.get('/about', (req, res) => {
   getData('./data.json', (err, data) => {
-    // if (err) return err
+    if (err) return err
     res.render('about', data)
   })
 })
@@ -39,7 +39,7 @@ router.get('/askQuestions', (req, res) => {
 })
 
 
-// Need to edit post link to add the question
+// Need to modify to be able to see the voting page once submitted
 router.post('/viewAndVote/', (req, res) => {
   const id = Number(req.param.id)
   const newQuestion = {
