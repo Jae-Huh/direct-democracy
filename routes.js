@@ -40,10 +40,24 @@ router.get('/askQuestions', (req, res) => {
 
 
 // Need to edit post link to add the question
-router.post('/viewAndVote', (req, res) => {
+router.post('/viewAndVote/', (req, res) => {
+  const id = Number(req.param.id)
+  const newQuestion = {
+    question: req.body.addQuestion,
+    yesCount: 0,
+    noCount: 0,
+    notSureCount: 0
+  }
+
   getData('./data.json', (err, data) => {
     if (err) return err
-    res.render('viewAndVote', data)
+    newQuestion.id = data.questions.length
+    data.questions.push(newQuestion)
+    fs.writeFile('./data.json', JSON.stringify(data), (err) => {
+      if (err) return err
+      // res.render('viewAndVote', data.questions[id])
+      res.redirect('/viewQuestions')
+    })
   })
 })
 
