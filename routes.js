@@ -40,7 +40,7 @@ router.get('/askQuestions', (req, res) => {
 
 
 // Need to modify to be able to see the voting page once submitted
-router.post('/viewAndVote/', (req, res) => {
+router.post('/viewAndVote', (req, res) => {
   const id = Number(req.param.id)
   const newQuestion = {
     question: req.body.addQuestion,
@@ -55,8 +55,8 @@ router.post('/viewAndVote/', (req, res) => {
     data.questions.push(newQuestion)
     fs.writeFile('./data.json', JSON.stringify(data), (err) => {
       if (err) return err
-      // res.render('viewAndVote', data.questions[id])
-      res.redirect('/viewQuestions')
+      res.render('viewAndVote', data.questions[data.questions.length-1])
+      // res.redirect('/viewQuestions/:id')
     })
   })
 })
