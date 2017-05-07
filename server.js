@@ -8,7 +8,7 @@ const app = express()
 
 const hbsConfig = {
   extname: 'hbs',
-  defaultLayouts: 'main'
+  defaultLayout: 'main'
 }
 
 app.engine('hbs', hbs(hbsConfig))
