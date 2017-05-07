@@ -29,6 +29,27 @@
       "yesCount": 0,
       "noCount": 0,
       "notSureCount": 0
+    },
+    {
+      "id": 3,
+      "question": "Should we buy a new fridge?",
+      "yesCount": 0,
+      "noCount": 0,
+      "notSureCount": 0
+    },
+    {
+      "id": 4,
+      "question": "Should we eat pizza for dinner?",
+      "yesCount": 0,
+      "noCount": 0,
+      "notSureCount": 0
+    },
+    {
+      "id": 5,
+      "question": "Is Wednesday good for boardgames night?",
+      "yesCount": 0,
+      "noCount": 0,
+      "notSureCount": 0
     }
   ]
 }

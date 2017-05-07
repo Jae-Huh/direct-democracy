@@ -4,10 +4,11 @@ const fs = require('fs')
 
 module.exports = router
 
-const data = require('./data.json')
+// Require the data json file OR do fs.readFile. Don't do both
+// const data = require('./data.json')
 
-function getFileContents (file, callback) {
-  fs.readFile(file, 'utf-8', (err, contents) => {
+function getData (filelocation, callback) {
+  fs.readFile(filelocation, 'utf-8', (err, contents) => {
     if (err) {
       callback(err)
     }
@@ -16,36 +17,47 @@ function getFileContents (file, callback) {
   })
 }
 
-
-
 router.get('/', (req, res) => {
-  getFileContents((data, contents) => {
-    if (err) {
-      return err
-    }
+  getData('./data.json', (err, data) => {
+    if (err) return err
     res.render('index', data)
   })
 })
 
 router.get('/about', (req, res) => {
-  res.render('about', links)
+  getData('./data.json', (err, data) => {
+    // if (err) return err
+    res.render('about', data)
+  })
 })
 
 router.get('/askQuestions', (req, res) => {
-  res.render('askQuestions', links)
+  getData('./data.json', (err, data) => {
+    if (err) return err
+    res.render('askQuestions', data)
+  })
 })
 
 
 // Need to edit post link to add the question
 router.post('/viewAndVote', (req, res) => {
-  res.render('viewAndVote', req.body)
+  getData('./data.json', (err, data) => {
+    if (err) return err
+    res.render('viewAndVote', data)
+  })
 })
 
 router.get('/viewQuestions', (req, res) => {
-  res.render('viewQuestions', links)
+  getData('./data.json', (err, data) => {
+    if (err) return err
+    res.render('viewQuestions', data)
+  })
 })
 
-// Need to edit post link to add the question
-router.get('/viewAndVote', (req, res) => {
-  res.render('viewAndVote', links)
+router.get('/viewAndVote/:id', (req, res) => {
+  const id = Number(req.params.id)
+  getData('./data.json', (err, data) => {
+    if (err) return err
+    res.render('viewAndVote', data.questions[id])
+  })
 })
