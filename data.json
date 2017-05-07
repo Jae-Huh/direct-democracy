@@ -1,0 +1,34 @@
+{
+  "links":
+  {
+    "home": "/",
+    "about": "/about",
+    "askQuestions": "/askQuestions",
+    "viewQuestions": "/viewQuestions",
+    "viewAndVote": "/viewAndVote"
+  },
+  "questions":
+  [
+    {
+      "id": 0,
+      "question": "Should we buy a new fridge?",
+      "yesCount": 0,
+      "noCount": 0,
+      "notSureCount": 0
+    },
+    {
+      "id": 1,
+      "question": "Should we eat pizza for dinner?",
+      "yesCount": 0,
+      "noCount": 0,
+      "notSureCount": 0
+    },
+    {
+      "id": 2,
+      "question": "Is Wednesday good for boardgames night?",
+      "yesCount": 0,
+      "noCount": 0,
+      "notSureCount": 0
+    }
+  ]
+}
