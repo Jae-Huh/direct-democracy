@@ -41,7 +41,7 @@ router.get('/askQuestions', (req, res) => {
 
 // Need to modify to be able to see the voting page once submitted
 router.post('/viewAndVote', (req, res) => {
-  const id = Number(req.param.id)
+  // const id = Number(req.param.id)
   const newQuestion = {
     question: req.body.addQuestion,
     yesCount: 0,
@@ -75,3 +75,27 @@ router.get('/viewAndVote/:id', (req, res) => {
     res.render('viewAndVote', data.questions[id])
   })
 })
+
+// router.post('/viewAndVote/:id', (req, res) => {
+//   const id = Number(req.params.id)
+//   const voteBtnValue = req.body.vote
+//
+//   getData('./data.json', (err, data) => {
+//     if (err) return err
+//     switch(voteBtnValue) {
+//       case 'Yes':
+//         data.questions[id].yesCount +=1
+//         break
+//       case 'No':
+//         data.questions[id].noCount +=1
+//         break
+//       case 'Not Sure':
+//         data.questions[id].notSureCount +=1
+//         break
+//     }
+//     fs.writeFile('./data.json', JSON.stringify(data), (err) => {
+//       if (err) return err
+//       res.render('viewAndVote', data.questions[id])
+//     })
+//   })
+// })

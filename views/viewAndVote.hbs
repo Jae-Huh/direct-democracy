@@ -26,8 +26,10 @@
     <h2>{{question}}</h2>
   </div>
   <div class="vote">
-    <input type="button" name="yes" value="Yes">
-    <input type="button" name="yes" value="No">
-    <input type="button" name="yes" value="Not Sure">
+    <form class="vote-form" action="/viewAndVote" method="post">
+      <input type="button" name="vote" value="Yes">
+      <input type="button" name="vote" value="No">
+      <input type="button" name="vote" value="Not Sure">
+    </form>
   </div>
 </div>
