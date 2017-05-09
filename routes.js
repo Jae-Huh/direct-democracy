@@ -76,26 +76,38 @@ router.get('/viewAndVote/:id', (req, res) => {
   })
 })
 
-router.post('/viewAndVote/:id', (req, res) => {
+router.get('/viewAndVote/:id/y', (req, res) => {
   const id = Number(req.params.id)
-  const voteBtnValue = req.body.vote
-
   getData('./data.json', (err, data) => {
     if (err) return err
-    switch(voteBtnValue) {
-      case 'Yes':
-        data.questions[id].yesCount +=1
-        break
-      case 'No':
-        data.questions[id].noCount +=1
-        break
-      case 'Not Sure':
-        data.questions[id].notSureCount +=1
-        break
-    }
+      data.questions[id].yesCount +=1
     fs.writeFile('./data.json', JSON.stringify(data), (err) => {
-      if (err) return err
-      res.render('viewAndVote', data.questions[id])
+        if (err) return err
+        res.render('viewAndVote', data.questions[id])
+      })
     })
-  })
+})
+
+router.get('/viewAndVote/:id/n', (req, res) => {
+  const id = Number(req.params.id)
+  getData('./data.json', (err, data) => {
+    if (err) return err
+      data.questions[id].noCount +=1
+    fs.writeFile('./data.json', JSON.stringify(data), (err) => {
+        if (err) return err
+        res.render('viewAndVote', data.questions[id])
+      })
+    })
+})
+
+router.get('/viewAndVote/:id/ns', (req, res) => {
+  const id = Number(req.params.id)
+  getData('./data.json', (err, data) => {
+    if (err) return err
+      data.questions[id].notSureCount +=1
+    fs.writeFile('./data.json', JSON.stringify(data), (err) => {
+        if (err) return err
+        res.render('viewAndVote', data.questions[id])
+      })
+    })
 })

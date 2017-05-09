@@ -26,10 +26,25 @@
     <h2>{{question}}</h2>
   </div>
   <div class="vote">
-    <form class="vote-form" action="/viewAndVote" method="post">
+    <!-- <form class="vote-form" action="/viewAndVote" method="post">
       <input type="submit" name="vote" value="Yes">
       <input type="submit" name="vote" value="No">
       <input type="submit" name="vote" value="Not Sure">
-    </form>
+    </form> -->
+    <a href="/viewAndVote/{{id}}/y">
+      <div class="yes-btn">
+        <p>Yes</p>
+      </div>
+    </a>
+    <a href="/viewAndVote/{{id}}/n">
+      <div class="no-btn">
+        <p>No</p>
+      </div>
+    </a>
+    <a href="/viewAndVote/{{id}}/ns">
+      <div class="not-sure-btn">
+        <p>Not Sure</p>
+      </div>
+    </a>
   </div>
 </div>
